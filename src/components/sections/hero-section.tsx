@@ -1,103 +1,129 @@
-"use client";
+'use client';
 
-import Image from "next/image";
+import Link from 'next/link';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { ArrowUpRight, Calendar, MapPin } from 'lucide-react';
 
-export default function HeroSection() {
-  return (
-    <section className="w-full max-w-full overflow-hidden">
-      <div className="bg-primary text-text-dark rounded-[16px] md:rounded-[24px] p-6 sm:p-8 md:p-12 lg:p-16 relative overflow-hidden">
-        <div className="text-xs font-bold uppercase tracking-[0.1em] mb-6 md:mb-8 text-text-dark">
-          WELCOME TO NEXTCONF
-        </div>
+const HeroSection = () => {
+    return (
+        <section className="relative overflow-hidden rounded-[20px] md:rounded-[32px] bg-background">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6">
 
-        <div className="relative">
-          {/* These are placeholder divs for the text reveal animation */}
-          <div className="blocking-text-anim _01" />
-          <div className="blocking-text-anim _02" />
-          <div className="blocking-text-anim _03" />
-          <h1 className="font-display text-[40px] sm:text-[55px] md:text-[70px] lg:text-[90px] xl:text-[100px] font-black leading-[0.9] -tracking-[0.02em] uppercase break-words">
-            Unlock Possibility
-            <br />
-            with No Code
-          </h1>
-        </div>
+                {/* Main Hero Content (Left/Top) */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6 }}
+                    className="col-span-1 lg:col-span-8 bg-primary rounded-[20px] md:rounded-[32px] p-6 sm:p-8 md:p-12 lg:p-16 text-primary-foreground relative overflow-hidden flex flex-col justify-between min-h-[500px] md:min-h-[600px]"
+                >
+                    {/* Subtle background pattern - not overwhelming */}
+                    <div className="absolute inset-0 opacity-5">
+                        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-white rounded-full blur-[120px] -translate-y-1/3 translate-x-1/3"></div>
+                    </div>
 
-        <p className="text-text-mid text-base md:text-lg mt-6 md:mt-8 max-w-xl">
-          a local hub for creators, entrepreneurs, and curious minds to explore, build, and grow without writing a single line of code.
-        </p>
+                    <div className="relative z-10 flex flex-col h-full justify-between">
+                        <div className="mb-8">
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.2, duration: 0.5 }}
+                                className="inline-flex items-center gap-2 px-4 py-2 bg-white/15 backdrop-blur-sm rounded-full text-xs font-bold uppercase tracking-widest mb-6 border border-white/20"
+                            >
+                                <span className="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                                Next Conference 2025
+                            </motion.div>
 
-        <div className="mt-12 md:mt-16 lg:mt-24 flex flex-col lg:flex-row gap-6 md:gap-8 lg:items-end">
-          <div className="lg:flex-[1.3] relative pt-3 pr-3 md:pt-4 md:pr-4">
-            <div className="absolute top-0 left-0 w-5 h-5 md:w-6 md:h-6 border-t-[3px] border-l-[3px] md:border-t-4 md:border-l-4 border-text-dark" />
-            <div className="absolute bottom-0 right-0 w-5 h-5 md:w-6 md:h-6 border-b-[3px] border-r-[3px] md:border-b-4 md:border-r-4 border-text-dark" />
+                            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[72px] xl:text-[80px] font-black uppercase leading-[0.9] tracking-tight mb-6">
+                                <span className="block">Unlock</span>
+                                <span className="block">Possibility</span>
+                                <span className="block">With No Code</span>
+                            </h1>
 
-            <div className="flex flex-col sm:flex-row gap-4 md:gap-6 h-full">
-              <div className="bg-secondary text-white rounded-[16px] md:rounded-[24px] p-6 md:p-8 flex-1 flex flex-col">
-                <h4 className="text-xs font-bold uppercase tracking-[0.1em] mb-4 md:mb-6 text-accent/80">
-                  WHAT YOU GET
-                </h4>
-                <ul className="space-y-2 md:space-y-3">
-                  <li className="flex items-center gap-2 md:gap-3">
-                    <div className="w-[8px] h-[8px] bg-primary rounded-full flex-shrink-0" />
-                    <span className="font-body text-sm md:text-base">
-                      {"Learn \u00A0practical skill"}
-                    </span>
-                  </li>
-                  <li className="flex items-center gap-2 md:gap-3">
-                    <div className="w-[8px] h-[8px] bg-primary rounded-full flex-shrink-0" />
-                    <span className="font-body text-sm md:text-base">
-                      Meet like-minded people
-                    </span>
-                  </li>
-                </ul>
-              </div>
+                            <p className="font-body text-lg md:text-xl opacity-90 max-w-xl leading-relaxed">
+                                Join the local hub for creators, entrepreneurs, and curious minds to explore, build, and grow without writing a single line of code.
+                            </p>
+                        </div>
 
-              <div className="bg-secondary text-white rounded-[16px] md:rounded-[24px] p-6 md:p-8 flex-1 flex flex-col">
-                <h4 className="text-xs font-bold uppercase tracking-[0.1em] mb-4 md:mb-6 text-accent/80">
-                  WHO CAN JOIN
-                </h4>
-                <ul className="space-y-2 md:space-y-3">
-                  <li className="flex items-center gap-2 md:gap-3">
-                    <div className="w-[8px] h-[8px] bg-primary rounded-full flex-shrink-0" />
-                    <span className="font-body text-sm md:text-base">Creators</span>
-                  </li>
-                  <li className="flex items-center gap-2 md:gap-3">
-                    <div className="w-[8px] h-[8px] bg-primary rounded-full flex-shrink-0" />
-                    <span className="font-body text-sm md:text-base">Entrepreneurs</span>
-                  </li>
-                </ul>
-              </div>
+                        <div className="flex flex-col sm:flex-row gap-4 mt-auto">
+                            <Link
+                                href="#Schedule"
+                                className="group flex items-center justify-center gap-3 bg-secondary text-white px-8 py-4 rounded-xl font-display font-bold uppercase tracking-wide hover:bg-secondary/90 transition-all hover:scale-105 hover:shadow-lg shadow-secondary/20"
+                            >
+                                Get Tickets
+                                <ArrowUpRight className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                            </Link>
+                            <Link
+                                href="#About"
+                                className="group flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm text-white border border-white/20 px-8 py-4 rounded-xl font-display font-bold uppercase tracking-wide hover:bg-white/20 transition-all"
+                            >
+                                Learn More
+                            </Link>
+                        </div>
+                    </div>
+                </motion.div>
+
+                {/* Side Panel (Right/Bottom) */}
+                <div className="col-span-1 lg:col-span-4 flex flex-col gap-4 md:gap-6">
+
+                    {/* Date & Location Card */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3, duration: 0.5 }}
+                        className="bg-card text-card-foreground p-6 md:p-8 rounded-[20px] md:rounded-[32px] shadow-lg flex-1 flex flex-col justify-center border border-border/50"
+                    >
+                        <div className="flex flex-col gap-6">
+                            <div className="flex items-start gap-4">
+                                <div className="bg-primary/10 p-3 rounded-2xl text-primary">
+                                    <Calendar className="w-8 h-8" />
+                                </div>
+                                <div>
+                                    <h3 className="font-display text-xl font-black uppercase mb-1">July 12-14, 2025</h3>
+                                    <p className="text-muted-foreground text-sm font-medium">09:00 AM - 06:00 PM</p>
+                                </div>
+                            </div>
+                            <div className="w-full h-px bg-border/50"></div>
+                            <div className="flex items-start gap-4">
+                                <div className="bg-secondary/10 p-3 rounded-2xl text-secondary">
+                                    <MapPin className="w-8 h-8" />
+                                </div>
+                                <div>
+                                    <h3 className="font-display text-xl font-black uppercase mb-1">San Francisco</h3>
+                                    <p className="text-muted-foreground text-sm font-medium">Moscone Center, CA</p>
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+
+                    {/* Image Card */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.4, duration: 0.5 }}
+                        className="relative h-[250px] lg:h-full min-h-[250px] rounded-[20px] md:rounded-[32px] overflow-hidden group shadow-lg"
+                    >
+                        <Image
+                            src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/f7e57522-fe3b-4c10-ba17-50f5e95f3ca3-nextconference-site-webflow-io/assets/images/6861fa40aa8539d3937cc0f1_MeetUp-9.png"
+                            alt="Conference attendees"
+                            fill
+                            className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div className="absolute bottom-6 left-6 right-6 text-white">
+                            <div className="flex items-center justify-between">
+                                <p className="font-display font-bold uppercase tracking-wider text-sm">Community</p>
+                                <div className="bg-white/20 backdrop-blur-md p-2 rounded-full">
+                                    <ArrowUpRight className="w-4 h-4" />
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+
+                </div>
             </div>
-          </div>
+        </section>
+    );
+};
 
-          <div className="lg:flex-1 relative pt-3 pl-3 md:pt-4 md:pl-4">
-            <div className="absolute top-0 left-0 w-5 h-5 md:w-6 md:h-6 border-t-[3px] border-l-[3px] md:border-t-4 md:border-l-4 border-text-dark" />
-            <div className="absolute bottom-0 right-0 w-5 h-5 md:w-6 md:h-6 border-b-[3px] border-r-[3px] md:border-b-4 md:border-r-4 border-text-dark" />
-
-            <div className="relative w-full aspect-[4/3] group rounded-[16px] md:rounded-[24px] overflow-hidden">
-              <Image
-                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/f7e57522-fe3b-4c10-ba17-50f5e95f3ca3-nextconference-site-webflow-io/assets/images/685cf1d4f3d741f27c335d07_Meetup_2001-3.jpg"
-                alt="People collaborating at a meetup"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 40vw"
-              />
-              <a
-                href="#"
-                className="absolute inset-0 flex items-center justify-center bg-black/30 rounded-[16px] md:rounded-[24px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              >
-                <Image
-                  src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/f7e57522-fe3b-4c10-ba17-50f5e95f3ca3-nextconference-site-webflow-io/assets/icons/6864761cc99b915dfa975be1_play-1.png"
-                  alt="Play button"
-                  width={80}
-                  height={80}
-                  className="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20"
-                />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+export default HeroSection;

@@ -4,18 +4,18 @@ import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const testimonials = [
+const useCases = [
   {
-    quote: "I launched my MVP after one session — the energy here is incredible!",
-    author: "-Youtubers of YoYo! Channel",
+    quote: "From NFT marketplaces to payments rails — our products work in real markets, not just demos.",
+    author: "Real-world Integration",
   },
   {
-    quote: "I launched my MVP after one session — the energy here is incredible!",
-    author: "~Youtubers of YoYo! Channel",
+    quote: "AI helpers that actually help. Content personalization that drives engagement.",
+    author: "Practical AI Solutions",
   },
   {
-    quote: "I launched my MVP after one session — the energy here is incredible!",
-    author: "~Youtubers of YoYo! Channel",
+    quote: "Scalable dApps without the complexity. Built for messy, real-world deployment.",
+    author: "Production Ready",
   },
 ];
 
@@ -28,7 +28,7 @@ const TestimonialSection = () => {
       clearInterval(intervalRef.current);
     }
     intervalRef.current = setInterval(() => {
-      setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+      setActiveIndex((prevIndex) => (prevIndex + 1) % useCases.length);
     }, 3000);
   };
 
@@ -47,11 +47,11 @@ const TestimonialSection = () => {
   };
 
   const goToPrev = () => {
-    setActiveIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length);
+    setActiveIndex((prevIndex) => (prevIndex - 1 + useCases.length) % useCases.length);
   };
 
   const goToNext = () => {
-    setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+    setActiveIndex((prevIndex) => (prevIndex + 1) % useCases.length);
   };
 
   const goToIndex = (index: number) => {
@@ -59,26 +59,27 @@ const TestimonialSection = () => {
   };
 
   return (
-    <section id="Testimonial" className="bg-background py-16 md:py-20 lg:py-[120px] overflow-hidden max-w-full">
-      <div className="container mx-auto px-4 md:px-5 lg:px-[60px]">
-        <div className="flex flex-col lg:flex-row gap-8 md:gap-10 justify-center">
+    <section id="Testimonial" className="bg-background py-16 md:py-20 lg:py-[120px] w-full">
+      <div className="w-full max-w-full px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col xl:flex-row gap-8 md:gap-10">
           
-          <div className="lg:w-[768px] flex-shrink-0">
+          <div className="flex-1 max-w-none">
             <div className="bg-card rounded-[20px] md:rounded-[24px] overflow-hidden flex flex-col lg:flex-row h-full">
               <div className="relative w-full lg:w-1/2 h-64 sm:h-80 lg:h-auto">
                 <Image
                   src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/f7e57522-fe3b-4c10-ba17-50f5e95f3ca3-nextconference-site-webflow-io/assets/images/685d12028bdd5b2c920f78b0_Meetup_20001-8.jpg"
-                  alt="A smiling man with a beard and glasses, presumably a member of the conference"
+                  alt="Diigoo team members collaborating on blockchain and AI solutions"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover object-top"
                 />
               </div>
               <div className="w-full lg:w-1/2 p-6 sm:p-8 md:p-12 flex flex-col">
                 <p className="text-xs font-bold uppercase tracking-[0.1em] text-text-dark mb-3 md:mb-4">
-                  TESTIMONIAL
+                  REAL-WORLD USE
                 </p>
-                <h3 className="font-display text-[32px] sm:text-[40px] md:text-[48px] text-secondary uppercase mb-4 md:mb-6 leading-none break-words">
-                  What Members Love
+                <h3 className="font-display text-[28px] sm:text-[36px] md:text-[42px] text-secondary uppercase mb-4 md:mb-6 leading-none break-words">
+                  Practical by Default
                 </h3>
                 <div className="w-[60px] md:w-[80px] h-[3px] md:h-[4px] bg-primary mb-6 md:mb-8" />
                 
@@ -88,14 +89,14 @@ const TestimonialSection = () => {
                       className="flex transition-transform duration-500 ease-out"
                       style={{ transform: `translateX(-${activeIndex * 100}%)` }}
                     >
-                      {testimonials.map((testimonial, index) => (
+                      {useCases.map((useCase, index) => (
                         <div key={index} className="w-full flex-shrink-0 pr-4">
                           <blockquote className="space-y-3 md:space-y-4">
-                            <p className="font-display text-[24px] sm:text-[28px] md:text-[32px] leading-[1.2] text-text-dark break-words">
-                              {testimonial.quote}
+                            <p className="font-display text-[20px] sm:text-[24px] md:text-[28px] leading-[1.2] text-text-dark break-words">
+                              {useCase.quote}
                             </p>
                             <footer className="font-body text-sm md:text-base italic text-text-dark">
-                              {testimonial.author}
+                              {useCase.author}
                             </footer>
                           </blockquote>
                         </div>
@@ -105,7 +106,7 @@ const TestimonialSection = () => {
       
                   <div className="flex items-center justify-between mt-auto pt-4">
                     <div className="flex gap-2">
-                      {testimonials.map((_, index) => (
+                      {useCases.map((_, index) => (
                         <button
                           key={index}
                           onClick={() => handleInteraction(() => goToIndex(index))}
@@ -130,25 +131,25 @@ const TestimonialSection = () => {
             </div>
           </div>
 
-          <div className="lg:w-[592px] lg:max-w-[592px] flex-shrink-0">
-            <div className="grid grid-cols-2 gap-6 sm:gap-8 md:gap-10 h-full">
-              <div className="bg-card text-card-foreground rounded-[20px] md:rounded-[24px] p-6 md:p-8 flex flex-col items-center justify-center text-center aspect-square sm:aspect-auto">
-                  <span className="font-display text-[48px] sm:text-[60px] md:text-[70px] lg:text-[80px] font-black text-secondary leading-none">100+</span>
-                  <span className="text-[10px] sm:text-xs font-bold mt-2 uppercase tracking-[0.1em]">ACTIVE MEMBERS</span>
+          <div className="flex-1 max-w-none xl:max-w-md">
+            <div className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 h-full">
+              <div className="bg-card text-card-foreground rounded-[20px] md:rounded-[24px] p-4 md:p-6 flex flex-col items-center justify-center text-center aspect-square">
+                  <span className="font-display text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] font-black text-secondary leading-none">NFT</span>
+                  <span className="text-[10px] sm:text-xs font-bold mt-2 uppercase tracking-[0.1em]">MARKETPLACES</span>
               </div>
-              <div className="bg-card text-card-foreground rounded-[20px] md:rounded-[24px] p-6 md:p-8 flex flex-col items-center justify-center text-center aspect-square sm:aspect-auto">
+              <div className="bg-card text-card-foreground rounded-[20px] md:rounded-[24px] p-4 md:p-6 flex flex-col items-center justify-center text-center aspect-square">
                   <div className="flex flex-col items-center">
-                      <span className="font-display text-[32px] sm:text-[38px] md:text-[44px] lg:text-[48px] font-black text-secondary leading-none">Beginner</span>
-                      <span className="font-display text-[32px] sm:text-[38px] md:text-[44px] lg:text-[48px] font-black text-secondary leading-none">Pro</span>
+                      <span className="font-display text-[24px] sm:text-[28px] md:text-[32px] lg:text-[36px] font-black text-secondary leading-none">Payment</span>
+                      <span className="font-display text-[24px] sm:text-[28px] md:text-[32px] lg:text-[36px] font-black text-secondary leading-none">Rails</span>
                   </div>
-                  <span className="text-[10px] sm:text-xs font-bold mt-2 uppercase tracking-[0.1em]">SKILL LEVELS</span>
+                  <span className="text-[10px] sm:text-xs font-bold mt-2 uppercase tracking-[0.1em]">INFRASTRUCTURE</span>
               </div>
-              <div className="bg-secondary text-secondary-foreground rounded-[20px] md:rounded-[24px] p-6 md:p-8 flex items-center justify-center text-center aspect-square sm:aspect-auto min-h-[160px] sm:min-h-[180px] md:min-h-[200px] lg:min-h-0">
-                  <h4 className="font-display text-lg sm:text-xl md:text-2xl uppercase leading-tight break-words">REAL-TIME DEMOS &amp; CHALLENGE</h4>
+              <div className="bg-secondary text-secondary-foreground rounded-[20px] md:rounded-[24px] p-4 md:p-6 flex items-center justify-center text-center aspect-square">
+                  <h4 className="font-display text-sm sm:text-base md:text-lg lg:text-xl uppercase leading-tight break-words">AI HELPERS &amp; PERSONALIZATION</h4>
               </div>
-              <div className="bg-primary text-primary-foreground rounded-[20px] md:rounded-[24px] p-6 md:p-8 flex flex-col items-center justify-center text-center aspect-square sm:aspect-auto min-h-[160px] sm:min-h-[180px] md:min-h-[200px] lg:min-h-0">
-                  <h4 className="font-display text-lg sm:text-xl md:text-2xl uppercase break-words">ACCESS TO</h4>
-                  <h4 className="font-display text-lg sm:text-xl md:text-2xl uppercase break-words">EXE-RESOURCES</h4>
+              <div className="bg-primary text-primary-foreground rounded-[20px] md:rounded-[24px] p-4 md:p-6 flex flex-col items-center justify-center text-center aspect-square">
+                  <h4 className="font-display text-sm sm:text-base md:text-lg lg:text-xl uppercase break-words">SCALABLE</h4>
+                  <h4 className="font-display text-sm sm:text-base md:text-lg lg:text-xl uppercase break-words">dAPPS</h4>
               </div>
             </div>
           </div>

@@ -4,45 +4,77 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
+  /* 
+  ARTHACHAIN PROFESSIONAL COLOR SYSTEM - 60-30-10 Rule
+  Base Palette: #093fb4 (Blue), #fffcfb (Off-white), #ffd8d8 (Pink), #ed3500 (Orange)
+  
+  Strategy:
+  - 60% Off-white backgrounds (clean, spacious)
+  - 30% Blue for structure and text (trustworthy, professional)
+  - 10% Orange for CTAs only (energy, action)
+  - Pink as subtle accent/borders (soft, modern)
+  */
+
+  /* Dominant (60%) - Neutral backgrounds for breathing room */
   --color-background: #fffcfb;
-  --color-foreground: #0b1234;
+  --color-foreground: #072b7a;
+  /* Darker blue for better readability (derived from #093fb4) */
 
-  --color-card: #FFFFFF;
-  --color-card-foreground: #0b1234;
+  --color-card: #ffffff;
+  /* Pure white for clean cards */
+  --color-card-foreground: #072b7a;
 
-  --color-popover: #FFFFFF;
-  --color-popover-foreground: #0b1234;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #072b7a;
 
+  /* Primary (30%) - Strategic blue usage */
   --color-primary: #093fb4;
   --color-primary-foreground: #fffcfb;
+  
+  /* Light blue accent color */
+  --color-light-blue: #87D3F8;
 
+  /* Accent (10%) - Orange for CTAs ONLY */
   --color-secondary: #ed3500;
   --color-secondary-foreground: #fffcfb;
 
-  --color-muted: #4A4A4A;
-  --color-muted-foreground: #0b1234;
+  /* Subtle Pink - Supporting role, not dominant */
+  --color-muted: #fef7f7;
+  /* Ultra-light pink tint (derived from #ffd8d8) */
+  --color-muted-foreground: #072b7a;
 
-  --color-accent: #ffd8d8;
-  --color-accent-foreground: #0b1234;
+  --color-accent: #ffecec;
+  /* Very subtle pink for hover states */
+  --color-accent-foreground: #072b7a;
 
-  --color-destructive: #ef4444;
-  --color-destructive-foreground: #fafafa;
+  --color-destructive: #ed3500;
+  --color-destructive-foreground: #fffcfb;
 
-  --color-border: #E0E0E0;
-  --color-input: #E0E0E0;
+  /* Borders - Barely-there pink for sophistication */
+  --color-border: #ffe8e8;
+  /* Lighter than #ffd8d8 for subtlety */
+  --color-input: #f5f5f5;
+  /* Neutral input background */
   --color-ring: #093fb4;
+  /* Blue focus ring for accessibility */
 
-  --color-chart-1: #e67e22;
-  --color-chart-2: #2d8659;
-  --color-chart-3: #1e3a5f;
-  --color-chart-4: #f1c40f;
-  --color-chart-5: #e74c3c;
+  /* Charts - Professional data viz */
+  --color-chart-1: #093fb4;
+  --color-chart-2: #ed3500;
+  --color-chart-3: #0d4dd6;
+  /* Lighter blue variant */
+  --color-chart-4: #ff6b3d;
+  /* Lighter orange variant */
+  --color-chart-5: #ffd8d8;
 
-  --color-text-dark: #0b1234;
-  --color-text-mid: #4A4A4A;
-  --color-surface-white: #FFFFFF;
-  --color-surface-off-white: #F5F5F5;
-  --color-border-light: #E0E0E0;
+  /* Semantic colors for consistency */
+  --color-text-dark: #072b7a;
+  /* High contrast dark blue */
+  --color-text-mid: #476cb8;
+  /* Medium blue for secondary text (derived tint) */
+  --color-surface-white: #ffffff;
+  --color-surface-off-white: #fef9f9;
+  --color-border-light: #ffe8e8;
 
   --font-display: "Archivo Black", sans-serif;
   --font-body: "Inter", sans-serif;
@@ -58,16 +90,76 @@
     from {
       height: 0;
     }
+
     to {
       height: var(--radix-accordion-content-height);
     }
   }
+
   @keyframes accordion-up {
     from {
       height: var(--radix-accordion-content-height);
     }
+
     to {
       height: 0;
+    }
+  }
+
+  /* Enhanced animations */
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+
+  @keyframes pulse-glow {
+
+    0%,
+    100% {
+      box-shadow: 0 0 20px rgba(9, 63, 180, 0.3);
+    }
+
+    50% {
+      box-shadow: 0 0 40px rgba(9, 63, 180, 0.6);
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
     }
   }
 }
@@ -81,6 +173,7 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
+
   *,
   ::after,
   ::before,
@@ -126,7 +219,8 @@
   }
 
   /* FIX: Prevent horizontal scrolling */
-  html, body {
+  html,
+  body {
     overflow-x: hidden;
     box-sizing: border-box;
     max-width: 100vw;
@@ -147,60 +241,83 @@
     color: var(--foreground);
     font-family: var(--font-body);
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  /* Enhanced focus states for accessibility */
+  *:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-display);
-    color: var(--color-text-dark); /* Default for headings on light backgrounds */
+    color: var(--color-text-dark);
+    /* Default for headings on light backgrounds */
     line-height: 1.1;
     letter-spacing: -0.01em;
     text-transform: uppercase;
   }
 
   h1 {
-    font-size: 5rem; /* ~80px */
+    font-size: 5rem;
+    /* ~80px */
     font-weight: 900;
     line-height: 0.9;
     letter-spacing: -0.02em;
   }
 
   h2 {
-    font-size: 3rem; /* ~48px */
+    font-size: 3rem;
+    /* ~48px */
     font-weight: 900;
     line-height: 1.0;
   }
 
   h3 {
-    font-size: 1.5rem; /* ~24px */
+    font-size: 1.5rem;
+    /* ~24px */
     font-weight: 900;
     line-height: 1.1;
   }
 
   h4 {
-    font-size: 1.125rem; /* ~18px */
+    font-size: 1.125rem;
+    /* ~18px */
     font-weight: 700;
     line-height: 1.2;
   }
 
   p {
-    font-size: 1rem; /* Standard Body: 16px */
+    font-size: 1rem;
+    /* Standard Body: 16px */
     font-weight: 400;
     line-height: 1.6;
     color: var(--color-text-mid);
   }
 
   .text-lg {
-    font-size: 1.125rem; /* Large Body: 18px */
+    font-size: 1.125rem;
+    /* Large Body: 18px */
     line-height: 1.6;
   }
 
   .text-sm {
-    font-size: 0.875rem; /* Small Body: 14px */
+    font-size: 0.875rem;
+    /* Small Body: 14px */
     line-height: 1.5;
   }
 
   .text-xs {
-    font-size: 0.75rem; /* Label/Caption: 12px */
+    font-size: 0.75rem;
+    /* Label/Caption: 12px */
     font-weight: 700;
     line-height: 1.4;
     letter-spacing: 0.1em;
@@ -220,26 +337,53 @@
     max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 2.5rem; /* 40px */
-    padding-right: 2.5rem; /* 40px */
+    padding-left: 1rem;
+    /* 16px */
+    padding-right: 1rem;
+    /* 16px */
+    width: 100%;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      /* 24px */
+      padding-right: 1.5rem;
+      /* 24px */
+    }
   }
 
   @media (min-width: 1024px) {
     .container {
-      padding-left: 3.75rem; /* 60px */
-      padding-right: 3.75rem; /* 60px */
+      padding-left: 2rem;
+      /* 32px */
+      padding-right: 2rem;
+      /* 32px */
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .container {
+      padding-left: 2.5rem;
+      /* 40px */
+      padding-right: 2.5rem;
+      /* 40px */
     }
   }
 
   .section-padding-y {
-    padding-top: 5rem; /* 80px */
-    padding-bottom: 5rem; /* 80px */
+    padding-top: 5rem;
+    /* 80px */
+    padding-bottom: 5rem;
+    /* 80px */
   }
 
   @media (min-width: 1024px) {
     .section-padding-y {
-      padding-top: 7.5rem; /* 120px */
-      padding-bottom: 7.5rem; /* 120px */
+      padding-top: 7.5rem;
+      /* 120px */
+      padding-bottom: 7.5rem;
+      /* 120px */
     }
   }
 }
@@ -335,5 +479,78 @@ nextjs-portal {
   .content-panel {
     height: auto;
     overflow-y: visible;
+    padding-top: 4rem; /* Add top padding to account for mobile menu button */
+  }
+}
+
+/* Animation delay utilities */
+.animation-delay-150 {
+  animation-delay: 150ms;
+}
+
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+
+/* Smooth scroll behavior for all browsers */
+@supports (scroll-behavior: smooth) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Enhanced selection styling */
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-primary-foreground);
+}
+
+::-moz-selection {
+  background-color: var(--color-primary);
+  color: var(--color-primary-foreground);
+}
+
+/* Loading state animations */
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg,
+      var(--color-border) 0%,
+      var(--color-border-light) 50%,
+      var(--color-border) 100%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+}
+
+/* Improved focus states for keyboard navigation */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

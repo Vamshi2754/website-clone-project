@@ -1,97 +1,72 @@
 import Link from 'next/link';
 
-const FooterSection = () => {
+export default function FooterSection() {
   return (
-    <footer className="bg-foreground py-16 md:py-20 lg:py-[120px] overflow-hidden max-w-full">
+    <footer className="bg-primary text-white py-16">
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 rounded-2xl md:rounded-3xl overflow-hidden">
-          {/* Column 1: Legal */}
-          <div className="bg-secondary text-secondary-foreground p-8 sm:p-10 md:p-12 lg:p-16 flex flex-col">
-            <h3 className="text-xs font-bold uppercase tracking-[0.15em] text-secondary-foreground/70 mb-6 md:mb-8">
-              LEGAL
-            </h3>
-            <div className="flex flex-col space-y-4 md:space-y-5">
-              <Link href="/license" className="text-sm md:text-base font-bold uppercase tracking-wider hover:underline transition-all">
-                License
-              </Link>
-              <Link href="/style-guide" className="text-sm md:text-base font-bold uppercase tracking-wider hover:underline transition-all">
-                Style Guide
-              </Link>
-              <Link href="/changelog" className="text-sm md:text-base font-bold uppercase tracking-wider hover:underline transition-all">
-                Changelog
-              </Link>
-              <Link href="/404" className="text-sm md:text-base font-bold uppercase tracking-wider hover:underline transition-all">
-                404 Page
-              </Link>
-            </div>
-            <div className="mt-auto pt-8 md:pt-12 text-xs md:text-sm text-secondary-foreground/60 font-medium">
-              Copyright © 2025 8AM DESIGN
-            </div>
-          </div>
-
-          {/* Column 2: Get in Touch & Social */}
-          <div className="bg-secondary text-secondary-foreground p-8 sm:p-10 md:p-12 lg:p-16">
-            <div className="mb-10 md:mb-14">
-              <h3 className="text-xs font-bold uppercase tracking-[0.15em] text-secondary-foreground/70 mb-4 md:mb-5">
-                Get in Touch
-              </h3>
-              <a 
-                href="mailto:hello@8am.design" 
-                className="text-base md:text-lg lg:text-xl font-semibold hover:underline break-all transition-all inline-block"
-              >
-                hello@8am.design
-              </a>
-            </div>
-            <div>
-              <h3 className="text-xs font-bold uppercase tracking-[0.15em] text-secondary-foreground/70 mb-6 md:mb-8">
-                Social
-              </h3>
-              <div className="flex flex-col space-y-4 md:space-y-5">
-                <Link href="/8amdsgn" className="text-sm md:text-base font-bold uppercase tracking-wider hover:underline transition-all">
-                  X
-                </Link>
-                <Link href="/8amdsgn" className="text-sm md:text-base font-bold uppercase tracking-wider hover:underline transition-all">
-                  LinkedIn
-                </Link>
-                <a 
-                  href="https://instagram.com/8amdsgn" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="text-sm md:text-base font-bold uppercase tracking-wider hover:underline transition-all"
-                >
-                  Instagram
-                </a>
-                <Link href="/8amdsgn" className="text-sm md:text-base font-bold uppercase tracking-wider hover:underline transition-all">
-                  Discord
-                </Link>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          {/* Company */}
+          <div>
+            <div className="flex items-center space-x-2 mb-6">
+              <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+                <span className="text-primary font-bold text-lg">D</span>
               </div>
+              <span className="text-xl font-bold">Diigoo</span>
+            </div>
+            <p className="text-white/80 mb-4">
+              Building India's inclusive tech ecosystem with AI × Blockchain. One app, infinite vibes.
+            </p>
+            <div className="flex space-x-4">
+              <a href="#" className="text-white/60 hover:text-white transition-colors">Twitter</a>
+              <a href="#" className="text-white/60 hover:text-white transition-colors">Discord</a>
+              <a href="#" className="text-white/60 hover:text-white transition-colors">GitHub</a>
             </div>
           </div>
 
-          {/* Column 3: Next Event */}
-          <div className="bg-primary text-primary-foreground p-8 sm:p-10 md:p-12 lg:p-16 md:col-span-2 lg:col-span-1">
-            <h3 className="text-xs font-bold uppercase tracking-[0.15em] text-primary-foreground/70 mb-6 md:mb-8">
-              Next Event
-            </h3>
-            <div className="flex flex-col space-y-4 md:space-y-5">
-              <a href="#" className="text-sm md:text-base font-bold uppercase tracking-wider hover:underline transition-all">
-                UX Research
-              </a>
-              <a href="#" className="text-sm md:text-base font-bold uppercase tracking-wider hover:underline transition-all">
-                Content Creator
-              </a>
-              <a href="#" className="text-sm md:text-base font-bold uppercase tracking-wider hover:underline transition-all">
-                Motion Designer
-              </a>
-              <a href="#" className="text-sm md:text-base font-bold uppercase tracking-wider hover:underline transition-all">
-                UI Designer
-              </a>
+          {/* Products */}
+          <div>
+            <h4 className="font-semibold mb-4">Products</h4>
+            <div className="space-y-2">
+              <Link href="/product/blockchain" className="block text-white/80 hover:text-white transition-colors">Blockchain</Link>
+              <Link href="/product/ai-platform" className="block text-white/80 hover:text-white transition-colors">AI Platform</Link>
+              <Link href="/product" className="block text-white/80 hover:text-white transition-colors">One App Platform</Link>
+              <Link href="/ecosystem" className="block text-white/80 hover:text-white transition-colors">Ecosystem</Link>
             </div>
+          </div>
+
+          {/* Developers */}
+          <div>
+            <h4 className="font-semibold mb-4">Developers</h4>
+            <div className="space-y-2">
+              <Link href="/developers" className="block text-white/80 hover:text-white transition-colors">Documentation</Link>
+              <Link href="/developers" className="block text-white/80 hover:text-white transition-colors">APIs & SDKs</Link>
+              <Link href="/developers" className="block text-white/80 hover:text-white transition-colors">Quick Start</Link>
+              <Link href="/blog" className="block text-white/80 hover:text-white transition-colors">Tutorials</Link>
+            </div>
+          </div>
+
+          {/* Company */}
+          <div>
+            <h4 className="font-semibold mb-4">Company</h4>
+            <div className="space-y-2">
+              <Link href="/about" className="block text-white/80 hover:text-white transition-colors">About</Link>
+              <Link href="/blog" className="block text-white/80 hover:text-white transition-colors">Blog</Link>
+              <Link href="/careers" className="block text-white/80 hover:text-white transition-colors">Careers</Link>
+              <Link href="/contact" className="block text-white/80 hover:text-white transition-colors">Contact</Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-white/60 text-sm">
+            © 2025 Diigoo. All rights reserved.
+          </p>
+          <div className="flex space-x-6 mt-4 md:mt-0">
+            <Link href="#" className="text-white/60 hover:text-white text-sm transition-colors">Privacy Policy</Link>
+            <Link href="#" className="text-white/60 hover:text-white text-sm transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>
     </footer>
   );
-};
-
-export default FooterSection;
+}
